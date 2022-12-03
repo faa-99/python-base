@@ -50,6 +50,10 @@ def drop_duplicates(df: pd.DataFrame) -> pd.DataFrame:
 
     :param df: dataframe with duplicates
     :return: re-indexed df without duplicates
+
+    df.drop_duplicates(keep='last')
+    df.drop_duplicates(subset=['c'])
+
     """
     return df.drop_duplicates().reset_index(drop=True)
 

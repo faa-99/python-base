@@ -18,7 +18,7 @@ if __name__ == "__main__":
     print(df.mean())
     print(df.count())
     print(df.sum())
-    
+
     print(df.shape)
 
     print(df.clip(lower=1, upper=10))
@@ -28,3 +28,9 @@ if __name__ == "__main__":
     print(df.duplicated().any())
     print(df.isnull().values.any())
     print(df.isnull().values.sum())
+
+    print(df.value_counts())
+    print(df.nunique())
+    for col in df:
+        print(df[col].unique())
+        print(df[col].value_counts())
