@@ -3,5 +3,5 @@
 set -e
 set -x
 
-black  src app.py
-isort  src app.py
+black ./*.py ./**/*.py
+isort ./*.py ./**/*.py

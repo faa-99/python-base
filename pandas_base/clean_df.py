@@ -15,7 +15,7 @@ def drop_all_nan(df: pd.DataFrame) -> pd.DataFrame:
     """
     Drop rows that have all NaN values
     """
-    return df.dropna(how='all')
+    return df.dropna(how="all")
 
 
 def drop_subset_nan(df: pd.DataFrame, cols: List) -> pd.DataFrame:

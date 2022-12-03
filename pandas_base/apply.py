@@ -32,7 +32,9 @@ def apply_fnc_elementwise(df: pd.DataFrame, fnc, na_action: str = None) -> pd.Da
     return df.applymap(fnc, na_action)
 
 
-def apply_fnc_elementwise_ser(ser: pd.Series, mapping, na_action: str = None) -> pd.Series:
+def apply_fnc_elementwise_ser(
+    ser: pd.Series, mapping, na_action: str = None
+) -> pd.Series:
     """
     Used for substituting each value in a Series with another value
     :param ser: Series

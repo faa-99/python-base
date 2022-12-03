@@ -1,5 +1,6 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 
 if __name__ == "__main__":
     ROWS = 10000
@@ -9,7 +10,7 @@ if __name__ == "__main__":
         {
             "feature_1": np.random.normal(size=ROWS),
             "feature_2": np.random.normal(size=ROWS),
-            "feature_3": np.random.normal(size=ROWS)
+            "feature_3": np.random.normal(size=ROWS),
         }
     )
 

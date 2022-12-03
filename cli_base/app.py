@@ -1,5 +1,6 @@
 import typer
 
+
 """
 Reference:
     https://typer.tiangolo.com/

@@ -1,7 +1,7 @@
 import json
 import os
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict, List
 
 from elasticsearch import Elasticsearch
 
@@ -56,11 +56,11 @@ def fetch_data_to_file(config_fpath: Path, out_fpath: Path):
 
 
 def fetch_documents(
-        elastic_client: Elasticsearch,
-        nb_hits: int,
-        date_field: str,
-        start_date: str,
-        end_date: str,
+    elastic_client: Elasticsearch,
+    nb_hits: int,
+    date_field: str,
+    start_date: str,
+    end_date: str,
 ) -> List[Dict]:
     """Fetch Elastic Documents in a specific date timeframe
     Parameters
@@ -85,19 +85,13 @@ def fetch_documents(
         "query": {
             "bool": {
                 "must": [
-                    {
-                        "range": {
-                            date_field: {"gte": start_date, "lte": end_date}
-                        }
-                    },
+                    {"range": {date_field: {"gte": start_date, "lte": end_date}}},
                 ]
             }
         },
     }
 
-    search_result = elastic_client.search(
-        body=search_query_body, scroll="1m"
-    )
+    search_result = elastic_client.search(body=search_query_body, scroll="1m")
 
     # Store initially retrieved docs (before scrolling)
     retrieved_documents_list: List[Dict] = [

@@ -15,14 +15,18 @@ def select_cols_without_nans(df: pd.DataFrame):
     return df.loc[:, df.notnull().all()]
 
 
-def select_random_fraction_rows(df: pd.DataFrame, fraction: float = 0.5, reindex: bool = True) -> pd.DataFrame:
+def select_random_fraction_rows(
+    df: pd.DataFrame, fraction: float = 0.5, reindex: bool = True
+) -> pd.DataFrame:
     df_sample = df.sample(frac=fraction)
     if reindex:
         df_sample = df_sample.reset_index(drop=True)
     return df_sample
 
 
-def select_random_number_rows(df: pd.DataFrame, number: int, reindex: bool = True) -> pd.DataFrame:
+def select_random_number_rows(
+    df: pd.DataFrame, number: int, reindex: bool = True
+) -> pd.DataFrame:
     df_sample = df.sample(n=number)
     if reindex:
         df_sample = df_sample.reset_index(drop=True)
@@ -55,7 +59,9 @@ def select_all_cols_except(df: pd.DataFrame, except_cols: List[str]):
     return df[df.columns.difference(except_cols)]
 
 
-def set_value_on_condition(df: pd.DataFrame, condition_col, condition_val, set_col, set_val):
+def set_value_on_condition(
+    df: pd.DataFrame, condition_col, condition_val, set_col, set_val
+):
     """
     Set a value in a column when another value in another column meets a certain condition
     Example:

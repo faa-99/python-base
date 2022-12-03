@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+
 """
 Use zip() when possible
 When the index is needed, use itertuples().
@@ -13,7 +14,7 @@ df = pd.DataFrame(
     {
         "feature_1": np.random.normal(size=ROWS),
         "feature_2": np.random.normal(size=ROWS),
-        "feature_3": np.random.normal(size=ROWS)
+        "feature_3": np.random.normal(size=ROWS),
     }
 )
 
@@ -37,5 +38,9 @@ def using_zip():
 def using_range():
     row_sum = 0
     for i in range(df.shape[0]):
-        row_sum += df["feature_1"].values[i] + df["feature_2"].values[i] + df["feature_3"].values[i]
+        row_sum += (
+            df["feature_1"].values[i]
+            + df["feature_2"].values[i]
+            + df["feature_3"].values[i]
+        )
     return row_sum

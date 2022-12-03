@@ -3,7 +3,7 @@
 set -e
 set -x
 
-mypy app.py src/*.py src/**/*.py tests/*.py
-flake8 tests src app.py
-black tests src app.py --check --diff
-isort tests src app.py --check-only
+mypy ./*.py ./**/*.py
+flake8 ./*.py ./**/*.py
+black ./*.py ./**/*.py --check --diff
+isort ./*.py ./**/*.py --check-only
