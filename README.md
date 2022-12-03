@@ -1,4 +1,4 @@
-# Dental Classifier
+# Python Codebase
 
 ## Description
 This repository is a code base for python for the purpose of development and code reuse.
