@@ -16,7 +16,7 @@ def select_cols_without_nans(df: pd.DataFrame):
 
 
 def select_random_fraction_rows(
-    df: pd.DataFrame, fraction: float = 0.5, reindex: bool = True
+        df: pd.DataFrame, fraction: float = 0.5, reindex: bool = True
 ) -> pd.DataFrame:
     df_sample = df.sample(frac=fraction)
     if reindex:
@@ -25,7 +25,7 @@ def select_random_fraction_rows(
 
 
 def select_random_number_rows(
-    df: pd.DataFrame, number: int, reindex: bool = True
+        df: pd.DataFrame, number: int, reindex: bool = True
 ) -> pd.DataFrame:
     df_sample = df.sample(n=number)
     if reindex:
@@ -60,7 +60,7 @@ def select_all_cols_except(df: pd.DataFrame, except_cols: List[str]):
 
 
 def set_value_on_condition(
-    df: pd.DataFrame, condition_col, condition_val, set_col, set_val
+        df: pd.DataFrame, condition_col, condition_val, set_col, set_val
 ):
     """
     Set a value in a column when another value in another column meets a certain condition
@@ -92,3 +92,51 @@ def df_intersection(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
     :return:
     """
     return pd.merge(df1, df2, how="inner").drop_duplicates()
+
+
+def select_values_by_range(df, row_ini, row_end, col_ini, col_end):
+    """Select a range of values in the dataframe.
+
+    Args:
+        df (pd.DataFrame): Dataframe.
+        row_ini (int): Initial row.
+        row_end (int): Final row.
+        col_ini (int): Initial column.
+        col_end (int): Final column.
+
+    Returns:
+        pd.DataFrame: Dataframe with the specific range of rows and columns.
+
+    Examples:
+        >>> df = pd.DataFrame({"letters":["a","a","c"], "numbers":[1,2,3]})
+        >>> select_values_by_range(df, 0, 1, "letters", "numbers")
+          letters  numbers
+        0       a        1
+        1       a        2
+    """
+    return df.loc[row_ini:row_end, col_ini:col_end]
+
+
+def select_values_by_index(df, vector_row_pos, vector_col_pos):
+    """Select values in the dataframe given specific indexes of rows and columns.
+
+    Args:
+        df (pd.DataFrame): Dataframe.
+        vector_row_pos (array): Array of row positions.
+        vector_col_pos (array): Array of column positions.
+
+    Returns:
+        pd.DataFrame: Dataframe with the specific values in the row and column indexes.
+
+    Examples:
+        >>> df = pd.DataFrame({"letters":["a","a","c"], "numbers":[1,2,3]})
+        >>> select_values_by_index(df, vector_row_pos=[0,2], vector_col_pos=[0,1])
+          letters  numbers
+        0       a        1
+        2       c        3
+    """
+    return df.iloc[vector_row_pos, vector_col_pos]
+
+
+def select_random_columns(df, n):
+    return df.sample(n=n, axis='columns')
